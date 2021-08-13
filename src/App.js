@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import quotes from './quotes.json';
 import './App.css';
 
+
 function App() {
+  const [quote, setQuote] = useState(quotes[0]);
+  const handleClick = () => {
+    let newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    setQuote(newQuote);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      <section id="quote-box">
+        <h2 id="text">{quote.text}</h2>
+        <h3 id="author">-{quote.author}</h3>
+        <div className="button-container">
+          <a
+            className="button"
+            target="_top"
+            href={`https://twitter.com/intent/tweet?text=${quote.text}`}
+          >
+            Tweet Me
+          </a>
+          <button type="button" id="new-quote" onClick={handleClick}>
+            New Quote
+          </button>
+        </div>
+      </section>
+    </main>
+
+  )
 }
 
 export default App;
