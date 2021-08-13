@@ -16,13 +16,17 @@ function App() {
         <h3 id="author">-{quote.author}</h3>
         <div className="button-container">
           <a
+            id="tweet-quote"
             className="button"
             target="_top"
             href={`https://twitter.com/intent/tweet?text=${quote.text}`}
           >
             Tweet Me
           </a>
-          <button type="button" id="new-quote" onClick={handleClick}>
+          <button
+            type="button"
+            id="new-quote"
+            onClick={handleClick}>
             New Quote
           </button>
         </div>
